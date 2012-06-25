@@ -1,0 +1,54 @@
+// Place all the styles related to the Tweet controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1.tweet {
+  margin-bottom: 0.3em;
+}
+
+table.tweets {
+  margin-top: 1em;
+}
+
+table.tweets tr {
+  height: 70px;
+}
+
+table.tweets tr td.img {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  width: 50px;
+}
+
+table.tweets tr td.tweet {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.tweets tr td.tweet span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
+}
+
+div.user_info a {
+  text-decoration: none;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.tweets {
+  font-size: 80%;
+}
+
+form.new_tweet textarea {
+  height: 4em;
+  margin-bottom: 0;
+}

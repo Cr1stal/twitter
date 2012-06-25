@@ -1,0 +1,36 @@
+<%= render 'layouts/header' %>
+<div class="hero-unit">
+<table class="profile">
+    <tr>
+      <td class="main">
+        <h1>
+          <%= image_tag @user.avatar.url(:thumb) %>
+          <%= @user.nickname %>
+        </h1>
+        <% if current_user.following?(@user) %>
+            <%= form_for(current_user.connections.find_by_followed_id(@user),
+                         html: { method: :delete }) do |f| %>
+                <%= f.submit "Unfollow", class: "btn btn-large" %>
+            <% end %>
+        <% else %>
+            <%= form_for(current_user.connections.build(followed_id: @user.id)) do |f| %>
+                <div><%= f.hidden_field :followed_id %></div>
+                <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+            <% end %>
+        <% end %>
+        <% if @user.tweets.any? %>
+            <table class="tweets">
+              <%= render @tweets %>
+            </table>
+        <% end %>
+      </td>
+      <td class="sidebar round">
+        <div class="user_info">
+            <span class="user_name"><%= @user.nick_status %></span> <br />
+            <strong>Url</strong> <%= link_to user_path(@user), @user %><br />
+            <strong>Tweets</strong> <%= @user.tweets.count %>
+        </div>
+      </td>
+    </tr>
+</table>
+</div>

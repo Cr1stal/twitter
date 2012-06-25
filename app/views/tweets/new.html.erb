@@ -1,0 +1,16 @@
+<%= form_for @tweet, :url => "/tweets/create", :html => { :class => "well" } do |f| %>
+
+    <fieldset>
+      <legend>Write your own tweet</legend>
+
+      <div class="field">
+        <%= f.label :text %>
+        <%= f.text_area :text, size: 140, cols: 35, rows: 4 %>
+      </div>
+
+      <div class="field">
+        <%= f.submit "Do tweet", :class => "btn" %>
+      </div>
+    </fieldset>
+
+<% end %>

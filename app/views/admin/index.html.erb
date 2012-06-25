@@ -1,0 +1,33 @@
+<%= render 'layouts/header' %>
+<div class="container">
+  <div class="hero-unit">
+    It's <%= Time.now %>
+    We have <%= pluralize(@total_tweets, "tweet") %>.
+  </div>
+    <%= form_for @tweet, :url => "/tweets/create" do |f| %>
+      <div class="field">
+        <%= f.text_area :text %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit" %>
+      </div>
+    <% end %>
+    <div class="content-main">
+    <table class="table">
+    <% @tweets.each do |tweet| %>
+             <tr>
+                <td class="content">
+                    <%= tweet.text %>
+                </td>
+               <td class="username">
+                 <%= tweet.user.nickname %>
+               </td>
+               <td class="timestamp">
+                 Posted <%= time_ago_in_words(tweet.created_at) %>
+               </td>
+             </tr>
+    <% end %>
+    </table>
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+<%= render 'layouts/header' %>
+<div class="container">
+  <div class="hero-unit">
+    It's <%= Time.now %>
+    We have <%= pluralize(@total_tweets, "tweet") %>.
+    <%= link_to "Make a tweet", "/tweets/new" %>
+  </div>
+
+    <div class="content-main">
+    <% @tweets.each do |tweet| %>
+        <div class="content">
+          <div class="stream-item-header">
+            <%= image_tag tweet.user.avatar.url(:thumb), class: "avatar" %>
+            <strong class="fullname"><%= tweet.user.nickname %></strong>
+            <span class="username">
+              <s>@</s>
+              <b><%= tweet.user.nick_status %></b>
+            </span>
+          </div>
+          <p class="js-tweet-text"><%= tweet.text %></p>
+        </div>
+        <br>
+    <% end %>
+    </div>
+
+</div>
